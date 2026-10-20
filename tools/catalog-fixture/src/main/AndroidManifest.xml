@@ -1,0 +1,6 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+ <application android:name="it.noxia.musicfixture.FixtureApp" android:label="Silent music fixture" android:theme="@android:style/Theme.Material.NoActionBar">
+  <receiver android:name="it.noxia.musicfixture.FixtureReceiver" android:exported="true" />
+  <activity android:name="it.noxia.musicfixture.FixtureActivity" android:exported="true" android:launchMode="singleTask"><intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter><intent-filter><action android:name="android.intent.action.VIEW"/><category android:name="android.intent.category.DEFAULT"/><category android:name="android.intent.category.BROWSABLE"/><data android:scheme="https"/></intent-filter></activity>
+ </application>
+</manifest>

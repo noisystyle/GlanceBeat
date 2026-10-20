@@ -1,0 +1,100 @@
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/settings_root" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:clipToPadding="false">
+    <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout android:id="@+id/settings_content" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_gravity="center_horizontal" android:orientation="vertical" android:padding="20dp">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="18dp" android:text="@string/settings_kicker" android:textSize="11sp" android:letterSpacing="0.13" android:textColor="?attr/colorPrimary" android:fontFamily="sans-serif-medium" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="@string/settings_title" android:textSize="38sp" android:lineHeight="44sp" android:fontFamily="sans-serif-medium" android:textColor="?attr/colorOnSurface" android:accessibilityHeading="true" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:layout_marginBottom="28dp" android:text="@string/settings_intro" android:textAppearance="@style/SettingsBody" />
+        <com.google.android.material.card.MaterialCardView style="@style/SettingsCard" android:layout_width="match_parent" android:layout_height="wrap_content" app:cardCornerRadius="32dp" app:cardBackgroundColor="?attr/colorSecondaryContainer">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="24dp" android:orientation="vertical">
+                <com.google.android.material.materialswitch.MaterialSwitch android:id="@+id/player_enabled" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp" android:text="@string/enable_player" android:textSize="22sp" android:fontFamily="sans-serif-medium" android:textColor="?attr/colorOnSecondaryContainer" android:saveEnabled="false" />
+                <TextView android:id="@+id/player_status" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="@string/player_off" android:textAppearance="@style/SettingsBody" android:textColor="?attr/colorOnSecondaryContainer" android:accessibilityLiveRegion="polite" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.button.MaterialButton android:id="@+id/preview_player" style="@style/Widget.Material3Expressive.Button" android:layout_width="match_parent" android:layout_height="64dp" android:layout_marginTop="12dp" android:layout_marginBottom="28dp" android:text="@string/preview" android:textSize="16sp" app:icon="@drawable/ic_play" app:iconGravity="textStart" app:cornerRadius="24dp" />
+        <com.google.android.material.card.MaterialCardView style="@style/SettingsCard" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="22dp" android:orientation="vertical">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical">
+                    <ImageView android:layout_width="28dp" android:layout_height="28dp" android:layout_marginEnd="12dp" app:tint="?attr/colorPrimary" android:src="@drawable/ic_music" android:importantForAccessibility="no" />
+                    <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="@string/music_title" android:textAppearance="@style/SettingsTitle" />
+                </LinearLayout>
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="@string/music_sources" android:textAppearance="@style/SettingsBody" />
+                <TextView android:id="@+id/music_status" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="@string/music_needed" android:textAppearance="@style/SettingsBody" android:accessibilityLiveRegion="polite" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/music_access" style="@style/Widget.Material3Expressive.Button.TonalButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="48dp" android:layout_marginTop="12dp" android:text="@string/grant_access" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView style="@style/SettingsCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="22dp" android:orientation="vertical">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/overlay_title" android:textAppearance="@style/SettingsTitle" />
+                <TextView android:id="@+id/overlay_status" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="@string/overlay_needed" android:textAppearance="@style/SettingsBody" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/overlay_access" style="@style/Widget.Material3Expressive.Button.TonalButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="48dp" android:layout_marginTop="12dp" android:text="@string/overlay_grant" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView style="@style/SettingsCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="22dp" android:orientation="vertical">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/continuity_title" android:textAppearance="@style/SettingsTitle" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="@string/continuity_description" android:textAppearance="@style/SettingsBody" />
+                <TextView android:id="@+id/continuity_status" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:textAppearance="@style/SettingsBody" android:accessibilityLiveRegion="polite" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/continuity_access" style="@style/Widget.Material3Expressive.Button.TonalButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="48dp" android:layout_marginTop="12dp" android:text="@string/continuity_manage" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView style="@style/SettingsCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" app:cardCornerRadius="32dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="22dp" android:orientation="vertical">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/drive_title" android:textAppearance="@style/SettingsTitle" android:accessibilityHeading="true" android:drawablePadding="12dp" app:drawableStartCompat="@drawable/ic_car" app:drawableTint="?attr/colorPrimary" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="@string/drive_intro" android:textAppearance="@style/SettingsBody" />
+                <com.google.android.material.materialswitch.MaterialSwitch android:id="@+id/drive_enabled" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:minHeight="56dp" android:text="@string/drive_enable" android:textAppearance="@style/TextAppearance.Material3.TitleMedium" android:textColor="?attr/colorOnSurface" android:saveEnabled="false" />
+                <TextView android:id="@+id/drive_status" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="@string/drive_off" android:textAppearance="@style/SettingsBody" android:accessibilityLiveRegion="polite" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:text="@string/drive_selected" android:textAppearance="@style/TextAppearance.Material3.LabelLarge" android:textColor="?attr/colorPrimary" />
+                <TextView android:id="@+id/drive_device_name" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:text="@string/drive_none" android:textAppearance="@style/TextAppearance.Material3.TitleMedium" android:textColor="?attr/colorOnSurface" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/drive_device" style="@style/Widget.Material3Expressive.Button.TonalButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp" android:layout_marginTop="12dp" android:text="@string/drive_choose" app:icon="@drawable/ic_bluetooth" app:iconGravity="textStart" />
+                <com.google.android.material.materialswitch.MaterialSwitch android:id="@+id/drive_charging" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:minHeight="56dp" android:text="@string/drive_charging" android:textAppearance="@style/TextAppearance.Material3.TitleMedium" android:textColor="?attr/colorOnSurface" android:saveEnabled="false" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/drive_charging_body" android:textAppearance="@style/SettingsBody" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:text="@string/drive_manual_hint" android:textAppearance="@style/SettingsBody" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView style="@style/SettingsCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" app:cardCornerRadius="32dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="22dp" android:orientation="vertical">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/internal_title" android:textAppearance="@style/SettingsTitle" android:accessibilityHeading="true" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="@string/internal_body" android:textAppearance="@style/SettingsBody" />
+                <com.google.android.material.materialswitch.MaterialSwitch android:id="@+id/internal_columns_reversed" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:minHeight="56dp" android:text="@string/internal_reverse" android:textAppearance="@style/TextAppearance.Material3.TitleMedium" android:textColor="?attr/colorOnSurface" android:saveEnabled="false" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="28dp" android:layout_marginBottom="14dp" android:paddingStart="8dp" android:paddingEnd="8dp" android:text="@string/how_it_works" android:textAppearance="@style/SettingsTitle" android:accessibilityHeading="true" />
+        <com.google.android.material.card.MaterialCardView style="@style/SettingsCard" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="22dp" android:orientation="vertical">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="0dp">
+                    <ImageView android:layout_width="24dp" android:layout_height="24dp" android:layout_marginEnd="16dp" app:tint="?attr/colorPrimary" android:src="@drawable/ic_touch" android:importantForAccessibility="no" />
+                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/double_tap" android:textAppearance="@style/TextAppearance.Material3.TitleMedium" android:textColor="?attr/colorOnSurface" />
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="@string/double_tap_body" android:textAppearance="@style/SettingsBody" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="24dp">
+                    <ImageView android:layout_width="24dp" android:layout_height="24dp" android:layout_marginEnd="16dp" app:tint="?attr/colorPrimary" android:src="@drawable/ic_lock" android:importantForAccessibility="no" />
+                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/unlock_title" android:textAppearance="@style/TextAppearance.Material3.TitleMedium" android:textColor="?attr/colorOnSurface" />
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="@string/unlock_body" android:textAppearance="@style/SettingsBody" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="24dp">
+                    <ImageView android:layout_width="24dp" android:layout_height="24dp" android:layout_marginEnd="16dp" app:tint="?attr/colorPrimary" android:src="@drawable/ic_palette" android:importantForAccessibility="no" />
+                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/colors_title" android:textAppearance="@style/TextAppearance.Material3.TitleMedium" android:textColor="?attr/colorOnSurface" />
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="@string/colors_body" android:textAppearance="@style/SettingsBody" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView style="@style/SettingsCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" app:cardBackgroundColor="?attr/colorTertiaryContainer">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="22dp" android:orientation="vertical">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/support_title" android:textAppearance="@style/SettingsTitle" android:textColor="?attr/colorOnTertiaryContainer" android:accessibilityHeading="true" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="@string/support_body" android:textAppearance="@style/SettingsBody" android:textColor="?attr/colorOnTertiaryContainer" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/support_project" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="56dp" android:layout_marginTop="16dp" android:text="@string/support_button" app:icon="@drawable/ic_heart" app:iconGravity="textStart" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:paddingStart="8dp" android:paddingEnd="8dp" android:text="@string/prototype_title" android:textAppearance="@style/TextAppearance.Material3.LabelLarge" android:textColor="?attr/colorPrimary" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:layout_marginBottom="24dp" android:paddingStart="8dp" android:paddingEnd="8dp" android:text="@string/prototype_body" android:textAppearance="@style/SettingsBody" />
+        <TextView android:id="@+id/icon_credits" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="24dp" android:paddingStart="8dp" android:paddingEnd="8dp" android:textAppearance="@style/TextAppearance.Material3.BodySmall" android:textColor="?attr/colorOnSurfaceVariant" android:textColorLink="?attr/colorPrimary" />
+    </LinearLayout>
+    </FrameLayout>
+</androidx.core.widget.NestedScrollView>

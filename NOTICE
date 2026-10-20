@@ -1,0 +1,15 @@
+GlanceBeat
+Copyright 2026 Noxia
+
+Original project code is licensed under the Apache License, Version 2.0.
+See LICENSE for the complete terms.
+
+This product includes adapted Phosphor Icons.
+Copyright (c) 2023 Phosphor Icons.
+Licensed under the MIT License; the full notice is included in
+app/src/main/assets/PHOSPHOR-LICENSE.txt and in the APK assets.
+
+Other dependencies and local variant assets retain their respective licenses.
+See docs/THIRD_PARTY.md and the notices distributed with those assets.
+
+This notice does not grant rights in third-party trademarks, music or artwork.

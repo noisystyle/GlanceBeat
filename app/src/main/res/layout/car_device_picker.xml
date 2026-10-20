@@ -1,0 +1,10 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp">
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/drive_picker_title" android:textSize="28sp" android:fontFamily="sans-serif-medium" android:textColor="?attr/colorOnSurface" android:accessibilityHeading="true" />
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="@string/drive_picker_intro" android:textAppearance="@style/SettingsBody" />
+    <TextView android:id="@+id/car_picker_status" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:textAppearance="@style/SettingsBody" android:accessibilityLiveRegion="polite" />
+    <androidx.core.widget.NestedScrollView android:id="@+id/car_picker_scroll" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:clipToPadding="false">
+        <LinearLayout android:id="@+id/car_picker_devices" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" />
+    </androidx.core.widget.NestedScrollView>
+    <com.google.android.material.button.MaterialButton android:id="@+id/car_picker_manage" style="@style/Widget.Material3Expressive.Button.TonalButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp" android:layout_marginTop="20dp" android:text="@string/drive_manage_bluetooth" app:icon="@drawable/ic_bluetooth" app:iconGravity="textStart" />
+    <com.google.android.material.button.MaterialButton android:id="@+id/car_picker_clear" style="@style/Widget.Material3Expressive.Button.TextButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:text="@string/drive_forget" />
+</LinearLayout>

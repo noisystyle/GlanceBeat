@@ -1,0 +1,718 @@
+{
+  "project": "GlanceBeat",
+  "edition": "public",
+  "files": [
+    {
+      "path": ".github/FUNDING.yml",
+      "sha256": "ba59879140bf50fec892c74e979338b2420d3ead9fed104c808ca9bcce1db514"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "9a412b3753dfc04f9821f8c354741b55ddb26f7d1f3d2325e172f1ce74cc8176"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "NOTICE",
+      "sha256": "bd57e336e8075d5872835ebb0e575df5e608ebb1525301b0a978c1ac27bb4ea3"
+    },
+    {
+      "path": "README.md",
+      "sha256": "5379935ae96395fd768745c0bc86ab392e8acf3927b670c12eb0fed33cfa59dd"
+    },
+    {
+      "path": "app/build.gradle.kts",
+      "sha256": "c9bbfb2d2a021ba1bc025300cfa3d36ac5f98fde8952f109d649d6c69b5b89af"
+    },
+    {
+      "path": "app/src/androidTest/java/it/noxia/ambientplayer/BitchordChecks.java",
+      "sha256": "80153f4950d1a672af4d5f65f231221bec1466c21e4bff9e6fb572bfe7654472"
+    },
+    {
+      "path": "app/src/androidTest/java/it/noxia/ambientplayer/CarouselCommitChecks.java",
+      "sha256": "b0eaf5b8f56c2800376083f325da30eac4f790b69f1f86f3dfca18ec5962c77b"
+    },
+    {
+      "path": "app/src/androidTest/java/it/noxia/ambientplayer/CarouselFrostChecks.java",
+      "sha256": "e0bef7b52851148f4a694290e88f4756f044df8fc029bb686682ca562e6cfcb3"
+    },
+    {
+      "path": "app/src/androidTest/java/it/noxia/ambientplayer/ContinuityChecks.java",
+      "sha256": "ecbb26ad30f3fcf9ff319d8ac1501c4d715e51d4d555a795a1fe9269038163bd"
+    },
+    {
+      "path": "app/src/androidTest/java/it/noxia/ambientplayer/DrivingInstrumentation.java",
+      "sha256": "a0d7930d4b6b4686655912f08452e7104e410dcff85a0ea86496f8fa9cf0302b"
+    },
+    {
+      "path": "app/src/androidTest/java/it/noxia/ambientplayer/LocalizationChecks.java",
+      "sha256": "87f0ef1ae0f8acc5e82012fca6e9d2e160e3b10edda268b61b2d0d63ca83533c"
+    },
+    {
+      "path": "app/src/androidTest/java/it/noxia/ambientplayer/MusicCatalogChecks.java",
+      "sha256": "1017583cb072f55711ba00d0b939cee17fc12e3a911b6033a068e46b22b4ab81"
+    },
+    {
+      "path": "app/src/androidTest/java/it/noxia/ambientplayer/MusicLaunchChecks.java",
+      "sha256": "65a4140cc7818a3453585f344ff08e91d1e2d68b0285745dcca851c32889e35e"
+    },
+    {
+      "path": "app/src/androidTest/java/it/noxia/ambientplayer/OfficialLocalChecks.java",
+      "sha256": "e263fe6ddce41e80d5ea250d26e8492bb26396b34669a45a0d623c0bb27c1abc"
+    },
+    {
+      "path": "app/src/androidTest/java/it/noxia/ambientplayer/PlayerColumnsChecks.java",
+      "sha256": "5b3bbb57fb5c03c8499a7aae5847de832ae41010679b44211f27114472acb6a2"
+    },
+    {
+      "path": "app/src/androidTest/java/it/noxia/ambientplayer/PlayerOpenLayoutChecks.java",
+      "sha256": "3a497510976d5b824390779eee276fd5d99ee6ee8050a910e87f2bccd026566c"
+    },
+    {
+      "path": "app/src/androidTest/java/it/noxia/ambientplayer/SetupChecks.java",
+      "sha256": "e9e66ab41619fb6a287d8f6e3a2ebb97cfb1246f5018f640906fe69480c7e81c"
+    },
+    {
+      "path": "app/src/androidTest/java/it/noxia/ambientplayer/StabilityChecks.java",
+      "sha256": "2f52d446987e7a880bd7c59970dfa9d941a8984c59ca3c58c97bbb13cf727845"
+    },
+    {
+      "path": "app/src/androidTest/java/it/noxia/ambientplayer/WindowEntranceChecks.java",
+      "sha256": "79b766eddf57fee59cab63aa8cb3bd52a52f66cda97952e6f9c2636c0321465c"
+    },
+    {
+      "path": "app/src/androidTest/java/it/noxia/ambientplayer/YoutubeShuffleChecks.java",
+      "sha256": "2b87e9d819e110ffd84f274d31c1878178452d93ac57270bf4de72f161b9c51b"
+    },
+    {
+      "path": "app/src/androidTestPublic/java/it/noxia/ambientplayer/AccessoryChecks.java",
+      "sha256": "ce2814d6315b116aa589d7db2b5f19348e4a1858372a344e4b7a4dfc7d7b552b"
+    },
+    {
+      "path": "app/src/androidTestPublic/java/it/noxia/ambientplayer/AccessoryLocaleChecks.java",
+      "sha256": "4ce825996827e4de831f988a7dbd1ee7c26625262ee145f503b67a9dd88a5581"
+    },
+    {
+      "path": "app/src/debug/AndroidManifest.xml",
+      "sha256": "6c01843442e9471f40027cae2d57213839732a538cf0bf5f669934b9ad191d0d"
+    },
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "sha256": "f9561421278f7aad5ab3076d5cfaae05fde074f3b97c18771ba0011fcc4a89b6"
+    },
+    {
+      "path": "app/src/main/assets/PHOSPHOR-LICENSE.txt",
+      "sha256": "b5b1f1da112d18ea2147decfd48ddc1bf2b5aeb6c265381579340e95b15a2bb2"
+    },
+    {
+      "path": "app/src/main/assets/PROJECT-LICENSE.txt",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "app/src/main/assets/PROJECT-NOTICE.txt",
+      "sha256": "bd57e336e8075d5872835ebb0e575df5e608ebb1525301b0a978c1ac27bb4ea3"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/AccessoryBattery.java",
+      "sha256": "adde6f6bcc826f25f0715f904805388f2c30203c1ab789b73d259129fc6207dc"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/AccessoryPanel.java",
+      "sha256": "08dc3c3f0d2574cc18617147cae51be080bad199785a83e9ccbed92cee4be0d4"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/AdjacentCovers.java",
+      "sha256": "ceeeb80a6acde275f6e3d0c27abad05345412eeb6168e1cee80fe6873afa180c"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/AmbientApplication.java",
+      "sha256": "45a1a38351032f6e32bb0cfa8920d0c0e55e9397d768eca889511030a10f27d5"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/AmbientBrightness.java",
+      "sha256": "cdf71038c05b3f33e12bf993bfa2eba74bfef5b5a2a12343727f41dd0efc6c28"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/AmbientBrightnessPolicy.java",
+      "sha256": "d5dd25ceb652f10e3f9943a0029ae66886dcbafc9d0ab494603e9466abdc652f"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/ArtworkFrost.java",
+      "sha256": "f09747d14d87defcca63f54a13bfc7afbb5edf6824d14ec9da20fc8d5e70a945"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/AutoPlayerGate.java",
+      "sha256": "74a89131a2697f9022853420aafd0f1b7d0ab8d8e00f3d077c337f87d27274b8"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/BitchordFavorite.java",
+      "sha256": "8ceaa525d2019272b4db7bb8addad93cc67cea341d6cd99493c4ecc7c58d7cba"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/BitchordShuffle.java",
+      "sha256": "07c48625a0fa05a41e1845ef4a40b503ba23126d204a4d00b0c073aea5a8e1b9"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/CarBluetooth.java",
+      "sha256": "7a5d8eca669e5e024e851386cdd0c66d5cc4dbbd74b2afabd5428a85a0edd305"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/CarDevicePicker.java",
+      "sha256": "5ae978468c31fb4f39b5398f7c5ccc2e1d9cea065c5ba023b65287a90df580cb"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/CarouselFrame.java",
+      "sha256": "2aea3f2b1d0fc69f9865240b41b2faadec6f68cdb4e6733ae2ebbc2f88c0931c"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/CarouselIdentity.java",
+      "sha256": "d472231e0cfe0209c12863db700fb01ef8b317c76d3e0a935a14abdfcbecc426"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/ColumnTransition.java",
+      "sha256": "a5f243fb26680a34cbf36ed08c1b87128e324e96d35537c02ab388a86e01ef82"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/ContentLayer.java",
+      "sha256": "d6b5f9b4f24ca137991d13e72dba0543ccd63cb34f4ac1e0c5bcdab9bc6a6b2f"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/CoverDrag.java",
+      "sha256": "13124f989106be8274f16cb7bdc6926cabd75a4438dc23a8ae38057a2b25dd06"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/DrivingModePolicy.java",
+      "sha256": "0b86f6d4159e20cb04053912408bed15d1f4e8940904959fe5b3a0d71331f1cf"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/FeedbackLayout.java",
+      "sha256": "4be0a20426aa3482b3c17168b39d4f0a1fa45f714c7ae8a87e74a7bfcea2afca"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/FrostedQueueList.java",
+      "sha256": "a9f52483c055c8e2ad8730a3736c8810b432ec19049b325cf90e296a3ec355ed"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/MainActivity.java",
+      "sha256": "292264d03b9fe34bf6bdfd0d26f07c05ef48f36d244b09793dc21591efbda4c3"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/MusicFeedback.java",
+      "sha256": "08b7a879253ffb5c53eb15a6364cc1b8b3091feef9beb401c40fd6fbfebca55f"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/MusicHistory.java",
+      "sha256": "de564aac4c91c6f78991a4e07317b71dc679533d68e443fd3381816692fab1b8"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/MusicLaunch.java",
+      "sha256": "25cea94e504f3ee40b84b91d37039fd941844774c09581235616fb4775da0a41"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/MusicLinks.java",
+      "sha256": "40b220d32dadfeb6b67ee3aad3ad4dd74b2c9ca35481a329d158ee041a2176b1"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/MusicQueue.java",
+      "sha256": "d4c352cd0f06a1b353c4527cb9f09b61e17206b45b06e17416958789a024fea9"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/MusicSessionService.java",
+      "sha256": "af9727ac2e77073a7ab54cc9d899ef729cc6b1c947d8316cf67583882b6778e8"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/MusicShuffle.java",
+      "sha256": "d1b94fd3f714c99fc9b15cff4092d1f322ca478295887956ee9f066f5c20a9b6"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/MusicSources.java",
+      "sha256": "f7fcb88c0664beff795a5f56a0511b1b2b7ec080b7852bf082bf393c3cf9180f"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/NotificationIconPolicy.java",
+      "sha256": "32f4aa3a6ff81dec443f7577b5ebd1a94096d52a9732e66c03ae83779eea223f"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/NotificationIcons.java",
+      "sha256": "4520abe2b0632e75d7e1965bd755f3223b90ea5c5a3fe302ce1a1e872b95e54e"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/PlaybackPresence.java",
+      "sha256": "3ff14f3a888a1098f90e004661c2715437a363f27204ef0ca1a555d811751091"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/PlayerColumns.java",
+      "sha256": "6ea2d614364e27ce14b1b4bbcc9d3182b17c9954a4c8330f702980527a319377"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/PlayerContentLayout.java",
+      "sha256": "2b61ea0ebd39df1d90276c788eec7e6c49f9bea35c31039d231aa138aeb5d4c5"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/PlayerContinuityService.java",
+      "sha256": "614d7d2c86a3161c6f543041bd74c853ccec6c6237264261e6d19cc034c87bfa"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/PlayerModeController.java",
+      "sha256": "46714964711f472331ca15f5462763a36477aa7a43280801ac3506e9e1b4f5f0"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/PlayerPreferences.java",
+      "sha256": "cafa17ed57cb9aad094a62dfc09735989e245a54f5ffdbd5d8e54103eb66d3f2"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/PlayerSurface.java",
+      "sha256": "c9bc5be0d61148eb349ce7e6810e69bc551000c6122364c0e52df35ef715aa62"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/PlayerView.java",
+      "sha256": "88673a4b6f4688f50a6739e8492f4e852599c7007c2fabcf828686dc2a224a55"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/PocketLightPolicy.java",
+      "sha256": "72ca5a4ee7cc9961308b2319a987d68dc6c0ac78f343c6b1e0daff6a11a41515"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/PocketProximity.java",
+      "sha256": "dc21ff93f46f61021446e633086e5506217f3df53fb5b4e4e9f79b7c7b634736"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/PreviewActivity.java",
+      "sha256": "0ed031602c095c8669de4fba86713993955744c9e67f6bb6eb1ca554d404a7c2"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/QueueArtwork.java",
+      "sha256": "198a0c787eb830e9e7dbd9576988b8b629f2408ba0d9c2273dc30e20077b421f"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/QueuePanel.java",
+      "sha256": "84b8e599ebb9ea4d539a5feda720aca57a46e056de535cc3920c607a1208c306"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/QueueSelection.java",
+      "sha256": "78de8ab0cfd44a21e7b99a74a1c25636a189a56c418ac26a2b4bbae0bd27b925"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/SeekGesture.java",
+      "sha256": "5559a0600734ede8b4484127903b7a991f61ae240af773e5fef7f0023acba6cd"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/SessionShuffle.java",
+      "sha256": "0c628c7ac4afe005f224bf9d7f1e659e420c0de1918eb5655b84f2796cc52d4d"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/SettingsActivity.java",
+      "sha256": "67186c947816121f7fd36a13af4d8ea913ba257494970ee86d2c168dd0660996"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/SetupActivity.java",
+      "sha256": "a45505b593dbc63cf3fd200fe1d9290510d1e1b340aed0448ad1df81ecd49f3a"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/SetupPermissions.java",
+      "sha256": "a7e6710612478c3424c65a3276838897dc458cb366d356113cecb2407dafbaf2"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/ShuffleMode.java",
+      "sha256": "19a5dcf2e613fa499506a0075195e3aa3e068054a3448296098dcb55e05601aa"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/SideCoverFrost.java",
+      "sha256": "0f7ce8abd75903d45cb20d2c1f26f2333732a106292c384ed92f499ff48737bb"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/TrackChangeTracker.java",
+      "sha256": "24f173d3e92eb29eb4dc6f67e1edc27516c4ed361da218ef6c206d975b97b74d"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/UiText.java",
+      "sha256": "7394217f95fa48cae421b380ac951f2fa5aa483b904d7179ac956907ab0d5889"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/VisibilityJournal.java",
+      "sha256": "ce1424ae911116ffc4ab32d97374fea19e5ca7c157ea33b9e65eccacb48f2758"
+    },
+    {
+      "path": "app/src/main/java/it/noxia/ambientplayer/WindowEntrance.java",
+      "sha256": "0908a212d193749ce90c537edc3f97a2ab64fb846713ac7ed5b89cce31c4a381"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_archive.xml",
+      "sha256": "2ca5b14aa4265636e367b9bf4dcbf32efc8d720af39afa907bbff527f1f83658"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_arrow_right.xml",
+      "sha256": "2d9cd5cbcbaf555e5f4dc28dc640368984fc5ec7ed534c1152e6c6e0272bbd39"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_arrow_up.xml",
+      "sha256": "3a07dd54bce69f93e802665b8ccf547395a4d6eff96b94eb4e461b12b0edc38f"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_arrows_left_right.xml",
+      "sha256": "66ae6fe2df91c788097b5d27b7acb13289b30435b45cb5a7e3da55e4b4eed5a0"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_bluetooth.xml",
+      "sha256": "3850a8b08b51d63e2c40281a6cc690d9e9c55911b93544ea7cba844bc67df876"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_car.xml",
+      "sha256": "ae3bd3535559d17a80332badf4b8399f64b1b705747ee4f173d2da8809f9437d"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_device_mobile.xml",
+      "sha256": "45a3b99cfe20292fd1845ada9f66fe343dbb5f352368e475609f0eea8e399f63"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_headphones.xml",
+      "sha256": "a9325fe9301dc850a4ab81f05ece718841962fcc0e9f32795c5f4de56b606a28"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_heart.xml",
+      "sha256": "ad257c126fcbc1c3f4b8d5838117a4bfb46a84017b452c763d5538b6cdc0aef5"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_heart_fill.xml",
+      "sha256": "222b7084a5f0c6f3df5011703658ef8f8c74ede41d4d9e5eb97315c1aa4437ef"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_launcher.xml",
+      "sha256": "a3f2a12c176e9b1f7f1a3fdadd85cf184b741100b27c47d06f46d3fc4a9fb026"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_lightning.xml",
+      "sha256": "861af08958b7450f25b507a4d1d13faa772f0613626779de289306ef3c0f4307"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_lock.xml",
+      "sha256": "2bf40b23b570ec7519f1fc1f39462ecbdc1e5ab46d3b878d0c669b9e95ae7d27"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_music.xml",
+      "sha256": "06ce257e1b35c030edbc9a05afd72184492ddb645aa8506117a42c36646a8c71"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_palette.xml",
+      "sha256": "0a9138b288fd7e8f1a7749e3898c19194a457306d0a529496b8ace5814c9ad0f"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_pause.xml",
+      "sha256": "44b171b4c4d8e9f813426c53d37556018af8210867aee237e8ab83c53b063d17"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_play.xml",
+      "sha256": "1ec0fe85f46dff0ee2796a862a3c8b024d1faa214ab567b08eaba1c6681af345"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_shuffle.xml",
+      "sha256": "084d264edf332c3e647ca4bdb87a444f433d0b68506e4e722741813e7aa9d81f"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_skip_back.xml",
+      "sha256": "61296e8e0c55544a56110d02e8ffa9c3bfdd7c476b619e41e554d72ad620c061"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_skip_forward.xml",
+      "sha256": "ea36cf1931035b5cb2b10b3f5f89e21642950b7cdb92196a07190cbe3702fc06"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_speaker_high.xml",
+      "sha256": "bc52391ced35af04b86dfca181e73b20b6b72800eaff481ae6ac344a32a109e5"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_thumb_down.xml",
+      "sha256": "45898ee2e042f54c5fabff24a4f86c49e2643731cc2599b22e199069bdff9322"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_thumb_up.xml",
+      "sha256": "84a26ae2510eeeab7382f45042bc190ddf25cfbaa0b53af18a868a40bc14357c"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_touch.xml",
+      "sha256": "a1503e3793cd323e6ba4323f82936e98e6b2826952ba6db1a7bd283d847a2fda"
+    },
+    {
+      "path": "app/src/main/res/layout/car_device_picker.xml",
+      "sha256": "d901cc3bab7f0f50d118ca2fa2b5b8abfe8897e82aaa1cf8c20a6142569c1e30"
+    },
+    {
+      "path": "app/src/main/res/layout/player_widgets.xml",
+      "sha256": "583189cfbd64b5f1d6bcb68bb46b1ede75d79b4a15267a66a21f8e5a90176ed0"
+    },
+    {
+      "path": "app/src/main/res/layout/settings.xml",
+      "sha256": "b0bf8eba91a56bc45a880b924df0797f4fcd5745fded8ea276e5f33484cd72a7"
+    },
+    {
+      "path": "app/src/main/res/layout/setup.xml",
+      "sha256": "31fa2134d605de4c5a9ba57f728f31ac10f243913f684a041b959d6bb550001a"
+    },
+    {
+      "path": "app/src/main/res/values/ids.xml",
+      "sha256": "f81ef3fe6341b943e7c97d4e0c65126d9a01c942042ae74436fcf2eeea1bda0a"
+    },
+    {
+      "path": "app/src/main/res/values/strings.xml",
+      "sha256": "1f14707af936b94a80e18c4478e553bf36d6cd67f7542f899613247d8b88458c"
+    },
+    {
+      "path": "app/src/main/res/values/styles.xml",
+      "sha256": "d71c5469f1bb080d629865139a90311c86b1789cf170147a286ad5d25090f2d2"
+    },
+    {
+      "path": "app/src/main/res/values-it/strings.xml",
+      "sha256": "2e5bedfddf9f35416daf39bb02a7a33c298c7943e099fa216591e1035dff2a77"
+    },
+    {
+      "path": "app/src/main/res/xml/data_extraction_rules.xml",
+      "sha256": "5a6a726da71311bd7d3a8a36e81bc157c0bf72542fea45fb51233f9ae3a16c8c"
+    },
+    {
+      "path": "app/src/main/res/xml/locales_config.xml",
+      "sha256": "06310506df788510fb8732ee53408355770d69c35437c1a9c0f3385ca9f8cd4c"
+    },
+    {
+      "path": "app/src/main/res/xml/player_continuity_accessibility.xml",
+      "sha256": "8808d0b3e07bbf177d785a3e41fe2d8a7d1bfe67d33a1eb71cf330d28b800ed8"
+    },
+    {
+      "path": "app/src/public/java/it/noxia/ambientplayer/AccessorySupport.java",
+      "sha256": "f8965b51c35c084947b408e9edef0e60946c2f217d7a135893d43a742987d1f0"
+    },
+    {
+      "path": "app/src/test/java/it/noxia/ambientplayer/AmbientBrightnessPolicyTest.java",
+      "sha256": "a4c01a54fbebc7a8d2565a7a6cf0abc97db654b482ef27c5f18d112dc05b1547"
+    },
+    {
+      "path": "app/src/test/java/it/noxia/ambientplayer/AutoPlayerGateTest.java",
+      "sha256": "af81c8470710fd5dc9d6899ec076765bbbb462648bd70f9d5dcbd3708d1c7ede"
+    },
+    {
+      "path": "app/src/test/java/it/noxia/ambientplayer/BitchordFavoriteTest.java",
+      "sha256": "70c43a4891460fdfe0c47d879a011aed5893d9ac86999ae1c960391293696102"
+    },
+    {
+      "path": "app/src/test/java/it/noxia/ambientplayer/BitchordShuffleTest.java",
+      "sha256": "259479115f55f61e6d9269570c7550d30ec993538fef64639efd68d12bce0f68"
+    },
+    {
+      "path": "app/src/test/java/it/noxia/ambientplayer/CarouselIdentityTest.java",
+      "sha256": "dcd6a4f922a6413db18aebc73219142ef07a29c3a7c8534fc39ce99a245f8f09"
+    },
+    {
+      "path": "app/src/test/java/it/noxia/ambientplayer/ColumnTransitionTest.java",
+      "sha256": "d7f5cdf8b93b316ca5f087d3dbbbc090d50b7b8db35707df87c672ef81397932"
+    },
+    {
+      "path": "app/src/test/java/it/noxia/ambientplayer/CoverDragTest.java",
+      "sha256": "4b3f107f8edf925ff12d6010c76448443c5e36bdc3ac80f6f37f629c4ebe1f18"
+    },
+    {
+      "path": "app/src/test/java/it/noxia/ambientplayer/DrivingModePolicyTest.java",
+      "sha256": "dfd9578d84cc94caa6f0430089f912145816412c2dafbb128f960ddd785eeffe"
+    },
+    {
+      "path": "app/src/test/java/it/noxia/ambientplayer/FeedbackLayoutTest.java",
+      "sha256": "154bbd50b568d44a8ab59e4f4f5a8397368361e068d0799e3a187a0aae82c23d"
+    },
+    {
+      "path": "app/src/test/java/it/noxia/ambientplayer/MusicLinksTest.java",
+      "sha256": "e83c17ee6d868906e01db5ce3f8a372caa7478f78274ebc9d97b3f99953c48ec"
+    },
+    {
+      "path": "app/src/test/java/it/noxia/ambientplayer/MusicSourcesTest.java",
+      "sha256": "070883e041c31bbc0daec8a48bee4b5052d27fa9a9b7aba4fe06ea1c2e580ea8"
+    },
+    {
+      "path": "app/src/test/java/it/noxia/ambientplayer/NotificationIconPolicyTest.java",
+      "sha256": "af6943a601e7217f3b94a7cb65d42e871377f93451d19c4f79ecf363acd88581"
+    },
+    {
+      "path": "app/src/test/java/it/noxia/ambientplayer/PlaybackPresenceTest.java",
+      "sha256": "45cf9928340a7990c9136d00812e91d6b8dc0cc8eb6e0d3b2ba7f9d4948458f5"
+    },
+    {
+      "path": "app/src/test/java/it/noxia/ambientplayer/PlayerColumnsTest.java",
+      "sha256": "503e2f0a3d9faa13cf350b0aea60866823b6f40abdfa2df24a9d31bed80fec89"
+    },
+    {
+      "path": "app/src/test/java/it/noxia/ambientplayer/PlayerContentLayoutTest.java",
+      "sha256": "88f69055bd7e82009e651bec3f790c8283e913d4e26362ef509db07470c8f9ac"
+    },
+    {
+      "path": "app/src/test/java/it/noxia/ambientplayer/PlayerModeControllerTest.java",
+      "sha256": "aa7bb557aee96c3d2b97a158b819977f5af1cdf36ae41f640ae45dd7c1e40fc0"
+    },
+    {
+      "path": "app/src/test/java/it/noxia/ambientplayer/PocketLightPolicyTest.java",
+      "sha256": "7c5d99d9ce7b5c42392954cc493aaad7f6aa870863150efcbeb0e942b56193b9"
+    },
+    {
+      "path": "app/src/test/java/it/noxia/ambientplayer/QueueSelectionTest.java",
+      "sha256": "a9599aded42e9a5da6cd341e83014141d05f5bbe76ff37c9a21839b0686b86e4"
+    },
+    {
+      "path": "app/src/test/java/it/noxia/ambientplayer/SeekGestureTest.java",
+      "sha256": "9e273258562f2238640e4a81b5af48d1b917d17cad53ea3fc672908a25ca440b"
+    },
+    {
+      "path": "app/src/test/java/it/noxia/ambientplayer/ShuffleModeTest.java",
+      "sha256": "c9400c990268aab7fad253ffd8aa236c34326faa6af1e872e3aa2b3154c1ca61"
+    },
+    {
+      "path": "app/src/test/java/it/noxia/ambientplayer/TrackChangeTrackerTest.java",
+      "sha256": "9bee1faedbf9032daec235aeba19a49d45b5922f319d3b7028c86296a2a1ce14"
+    },
+    {
+      "path": "build.gradle.kts",
+      "sha256": "ed6ba3bdfc3cbdcd648d7213860ffa3b0d62da38c37915b731b08b4df6f9d209"
+    },
+    {
+      "path": "docs/COMPATIBILITY.md",
+      "sha256": "99a7dfb928ab4ce6d4678f61571bf63be8eba316e319e18c9c12f3b7b5ad6361"
+    },
+    {
+      "path": "docs/DEVELOPMENT.md",
+      "sha256": "ff5d34674e70671cd89b89facfca58eee05d0e52b0f6a325aa5ff44a0d84f2ab"
+    },
+    {
+      "path": "docs/PRIVACY.md",
+      "sha256": "eb242ef34ca783cba640ce525d68600f3eac5bcebf7e7889499ac34732dcec9b"
+    },
+    {
+      "path": "docs/RELEASES.md",
+      "sha256": "11be3571fd76817564186c2b774670b5d046ba78fa1c6eac21e38ff48ee2fa64"
+    },
+    {
+      "path": "docs/THIRD_PARTY.md",
+      "sha256": "eabfd4c097100f862b0f207f403d9a8c42bced104a21a166c16f34ba372a7194"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.jar",
+      "sha256": "497c8c2a7e5031f6aa847f88104aa80a93532ec32ee17bdb8d1d2f67a194a9c7"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.properties",
+      "sha256": "c94d41b634a5e0ff8a2f812023697b1337eebac18e9962610356a1793f72896d"
+    },
+    {
+      "path": "gradle.properties",
+      "sha256": "3cacd22aa6686499e91f96d801d5557a9c0b81ab1872f81285ee395f2539f630"
+    },
+    {
+      "path": "gradlew",
+      "sha256": "a5a5c199ba02189ae8c46a334223371a20599d9c298ef65e7540ede4a3f72d59"
+    },
+    {
+      "path": "gradlew.bat",
+      "sha256": "d539676c48b596afda64c963ec8f7ee56c7b3fe7e3b81d1dbe2d1a1e3dd9e9f8"
+    },
+    {
+      "path": "settings.gradle.kts",
+      "sha256": "34ef973fd21e763621b4378f9573bb91094568dd5091cca88c7bf7fda5dad93b"
+    },
+    {
+      "path": "tools/bitchord-fixture/build.gradle.kts",
+      "sha256": "d8b45c3d9c726f5bb2d8fe06aeaef53a2a45fa0b0266a87835ebfc9fa6ecfa88"
+    },
+    {
+      "path": "tools/bitchord-fixture/settings.gradle.kts",
+      "sha256": "72e224b74a50e7e19d9ae37efb955fece7d2c9532f8ae2718796a3e4f1eca868"
+    },
+    {
+      "path": "tools/bitchord-fixture/src/main/AndroidManifest.xml",
+      "sha256": "4a507c6d1cc6af83d5e5b70338d8853bccfddeec9e885b7ce53996b328d5b0c3"
+    },
+    {
+      "path": "tools/bitchord-fixture/src/main/java/com/music/bitchord/FavoriteFixture.java",
+      "sha256": "a88ab941f9508628cb68a5ae3fafc76a997217a2d2eaf10447aa6c2db5a086c5"
+    },
+    {
+      "path": "tools/bitchord-fixture/src/main/java/com/music/bitchord/FixtureActivity.java",
+      "sha256": "271f423b622068e427ec0cc37f7d9a7207ad6491e824fb3b6421a40186fe91ee"
+    },
+    {
+      "path": "tools/bitchord-fixture/src/main/java/com/music/bitchord/FixtureReceiver.java",
+      "sha256": "cf0a382393ee2768dda04361431bdbda1b61608717562287910fc1e0dadf7152"
+    },
+    {
+      "path": "tools/catalog-fixture/build.gradle.kts",
+      "sha256": "452930578fbcc4db42f58fd7666b25ba1c78c2e35fa7ce23a9ec59a84e2b175e"
+    },
+    {
+      "path": "tools/catalog-fixture/settings.gradle.kts",
+      "sha256": "79ed7fc1093496989d19a675a36ae6aa86020d98e5ae747b351ab76c2ced025d"
+    },
+    {
+      "path": "tools/catalog-fixture/src/main/AndroidManifest.xml",
+      "sha256": "5951dccbabfe3ed429ee2667fa068fb32b987c5e707e6997db656bf11fa491b6"
+    },
+    {
+      "path": "tools/catalog-fixture/src/main/java/it/noxia/musicfixture/FixtureActivity.java",
+      "sha256": "a178a01d78f944e7d3c8fb15575d50cdeccfa241c130fa16d7e9b07d9ef4228f"
+    },
+    {
+      "path": "tools/catalog-fixture/src/main/java/it/noxia/musicfixture/FixtureApp.java",
+      "sha256": "59df452d1c3190b18a31af475f19add3bc922f816062546aa31c3e6e48a7c4f6"
+    },
+    {
+      "path": "tools/catalog-fixture/src/main/java/it/noxia/musicfixture/FixtureReceiver.java",
+      "sha256": "35951d4d8bc93d9148e954adc3fcf9183408db5965d61517c123b4a07792e60e"
+    },
+    {
+      "path": "tools/export_public_source.py",
+      "sha256": "5c609657b2bbc08f35be6677f3c117be1285d253d011f7eed2f2a5b61fdbadc0"
+    },
+    {
+      "path": "tools/music-fixture/build.gradle.kts",
+      "sha256": "0218543964f213931ccc12d44e703887c2f253774de936e4f53aca5ea5bce857"
+    },
+    {
+      "path": "tools/music-fixture/settings.gradle.kts",
+      "sha256": "50ff85e0f9d0245a3f6d0eb34951e792703836b1f2c973537530b0862dbcc4a7"
+    },
+    {
+      "path": "tools/music-fixture/src/main/AndroidManifest.xml",
+      "sha256": "e9ef565baf19942a58e45ed4ed39c8384c6a8ff3c7dc32d628b0268cda1f304e"
+    },
+    {
+      "path": "tools/music-fixture/src/main/java/app/morphe/android/apps/youtube/music/ArtworkProvider.java",
+      "sha256": "6dfa8382383d5dcd7bf466c98221d2ce8b1b9a04531e74c3bb5df3bcb63bde73"
+    },
+    {
+      "path": "tools/music-fixture/src/main/java/app/morphe/android/apps/youtube/music/FixtureActivity.java",
+      "sha256": "a06e069761280507409ccd5506110bd6190f82811d7fe92af6ba1715c7890e52"
+    },
+    {
+      "path": "tools/music-fixture/src/main/java/app/morphe/android/apps/youtube/music/FixtureApp.java",
+      "sha256": "c94a3f91bbe00f7bc19085c6328168211d3f4066b80d2f73e8af360dc1045b3d"
+    },
+    {
+      "path": "tools/music-fixture/src/main/java/app/morphe/android/apps/youtube/music/FixtureReceiver.java",
+      "sha256": "7f3d3b3c0374bba59eba9ff68d1461589f7de94ee648e258c4ddd445c5871c1a"
+    },
+    {
+      "path": "tools/probe_player_reliability_emulator.py",
+      "sha256": "92fb92c440c07c5f44db312add9be71c80d967c18cdf7dcd749898dac164d08c"
+    },
+    {
+      "path": "tools/stability-fixture/build.gradle.kts",
+      "sha256": "cf2661a141b0eb13f3db54f0c12915ea734dbc2b6489b6c59b4337cbd47a95da"
+    },
+    {
+      "path": "tools/stability-fixture/settings.gradle.kts",
+      "sha256": "20b6ec06cc023bfdf0371c9b481e11d1d1066fc8c3409557a12dfccdfca10d19"
+    },
+    {
+      "path": "tools/stability-fixture/src/main/AndroidManifest.xml",
+      "sha256": "23ef9976137d8cbe5a1bc1d783a726288a8e947b1ba90f919420e04b77df7b17"
+    },
+    {
+      "path": "tools/stability-fixture/src/main/java/it/noxia/ambientplayer/stabilityfixture/TransparentActivity.java",
+      "sha256": "079e08eb8f62a7e82c6f1d7a3304f8f93111207de16e6c45c83a0f35198a1792"
+    }
+  ]
+}

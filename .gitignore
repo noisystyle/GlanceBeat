@@ -1,0 +1,23 @@
+.gradle/
+**/build/
+local.properties
+work/
+.DS_Store
+__pycache__/
+
+# Local personal edition and its tests are never part of the public repository.
+app/src/personal/
+app/src/testPersonal/
+app/src/androidTestPersonal/
+
+# Signing credentials and generated publication packages.
+*.jks
+*.keystore
+keystore.properties
+signing.properties
+.env
+.env.*
+dist/
+.idea/
+*.iml
+captures/

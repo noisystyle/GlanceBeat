@@ -1,0 +1,6 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <application>
+        <!-- ADB probe entry point exists only in debuggable test builds. -->
+        <activity android:name=".MainActivity" android:exported="true" tools:replace="android:exported" />
+    </application>
+</manifest>
