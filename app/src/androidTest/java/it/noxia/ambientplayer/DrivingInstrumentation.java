@@ -14,6 +14,7 @@ import java.util.*;
 /** Emulator-only UI and window integration. Synthetic Bluetooth never enters the shipped app. */
 public final class DrivingInstrumentation extends Instrumentation {
     private final JSONArray checks = new JSONArray();
+    private String localProvider;
     private boolean swipesOnly,frostOnly,localizationOnly,setupOnly;
     private boolean accessoryOnly,commitOnly,openLayoutOnly,entranceOnly,stabilityOnly,continuityOnly,columnsOnly,bitchordOnly;
     private final String car = "12:34:56:78:9A:BC";
@@ -22,7 +23,7 @@ public final class DrivingInstrumentation extends Instrumentation {
     private SettingsActivity settings;
     private CarBluetooth monitor;
     private final List<String> errors = new ArrayList<>();
-    @Override public void onCreate(Bundle args) { super.onCreate(args);swipesOnly=args!=null && "true".equals(args.getString("swipes"));setupOnly=args!=null && "true".equals(args.getString("setup"));localizationOnly=args!=null && "true".equals(args.getString("localization"));musicLaunchOnly=args!=null && "true".equals(args.getString("music_launch"));officialLocalOnly=args!=null && "true".equals(args.getString("official_local"));catalogOnly=args!=null && "true".equals(args.getString("catalog"));youtubeShuffleOnly=args!=null && "true".equals(args.getString("youtube_shuffle")); bitchordOnly=args!=null && "true".equals(args.getString("bitchord"));columnsOnly=args!=null && "true".equals(args.getString("columns"));continuityOnly=args!=null && "true".equals(args.getString("continuity"));stabilityOnly=args!=null && "true".equals(args.getString("stability"));entranceOnly=args!=null && "true".equals(args.getString("entrance"));frostOnly=args!=null && "true".equals(args.getString("carousel_frost")); accessoryOnly=args!=null && "true".equals(args.getString("accessory"));openLayoutOnly=args!=null && "true".equals(args.getString("open_layout"));commitOnly=args!=null && "true".equals(args.getString("carousel_commit")); start(); }
+    @Override public void onCreate(Bundle args) { super.onCreate(args);localProvider=args==null?null:args.getString("local_provider");swipesOnly=args!=null && "true".equals(args.getString("swipes"));setupOnly=args!=null && "true".equals(args.getString("setup"));localizationOnly=args!=null && "true".equals(args.getString("localization"));musicLaunchOnly=args!=null && "true".equals(args.getString("music_launch"));officialLocalOnly=args!=null && "true".equals(args.getString("official_local"));catalogOnly=args!=null && "true".equals(args.getString("catalog"));youtubeShuffleOnly=args!=null && "true".equals(args.getString("youtube_shuffle")); bitchordOnly=args!=null && "true".equals(args.getString("bitchord"));columnsOnly=args!=null && "true".equals(args.getString("columns"));continuityOnly=args!=null && "true".equals(args.getString("continuity"));stabilityOnly=args!=null && "true".equals(args.getString("stability"));entranceOnly=args!=null && "true".equals(args.getString("entrance"));frostOnly=args!=null && "true".equals(args.getString("carousel_frost")); accessoryOnly=args!=null && "true".equals(args.getString("accessory"));openLayoutOnly=args!=null && "true".equals(args.getString("open_layout"));commitOnly=args!=null && "true".equals(args.getString("carousel_commit")); start(); }
     private void check(String name, boolean ok) throws Exception {
         if (!ok) throw new AssertionError(name);
         checks.put(new JSONObject().put("name",name).put("passed",true));
@@ -62,6 +63,7 @@ public final class DrivingInstrumentation extends Instrumentation {
     private void pref(String key,boolean value) { main(() -> PlayerPreferences.store(getTargetContext()).edit().putBoolean(key,value).commit()); }
     private boolean screenKept() { return (player.getWindow().getAttributes().flags & WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)!=0; }
     @Override public void onStart() {
+        if(localProvider!=null){LocalProviderChecks.run(this,localProvider);return;}
         if(swipesOnly){SwipeInputChecks.run(this);return;}
         if(setupOnly){SetupChecks.run(this);return;}
         if(localizationOnly){LocalizationChecks.run(this);return;}

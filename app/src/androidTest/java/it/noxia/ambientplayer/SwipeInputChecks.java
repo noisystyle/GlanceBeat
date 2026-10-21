@@ -24,6 +24,7 @@ final class SwipeInputChecks {
     private MediaSession session;
     private boolean publishedQueue=true;
     private boolean acknowledge=true;
+    private boolean queueGap,gapRetained;
     private long offered=PlaybackState.ACTION_SKIP_TO_NEXT|PlaybackState.ACTION_SKIP_TO_PREVIOUS|PlaybackState.ACTION_SKIP_TO_QUEUE_ITEM|PlaybackState.ACTION_PAUSE|PlaybackState.ACTION_SET_RATING;
     private long track=101;
     private int unlocks,opens,ratings;
@@ -70,7 +71,13 @@ final class SwipeInputChecks {
             main(()->{
                 session=new MediaSession(activity,"Silent swipe input fixture");
                 session.setCallback(new MediaSession.Callback(){
-                    @Override public void onSkipToQueueItem(long id){requests.add(id);publish(id);}
+                    @Override public void onSkipToQueueItem(long id){
+                        requests.add(id);
+                        if(!queueGap){publish(id);return;}
+                        setStatic("current",null);setStatic("playbackSnapshot",null);scene.refreshMedia();surface.refreshSession();
+                        gapRetained=surface.queueOpen() && surface.queuePending();
+                        new Handler(Looper.getMainLooper()).postDelayed(()->{setStatic("current",new MediaController(activity,session.getSessionToken()));publish(id);},450);
+                    }
                     @Override public void onSkipToNext(){requests.add(track+1);if(acknowledge)publish(track+1);}
                     @Override public void onSkipToPrevious(){requests.add(track-1);if(acknowledge)publish(track-1);}
                     @Override public void onSetRating(Rating rating){ratings++;}
@@ -132,6 +139,26 @@ final class SwipeInputChecks {
             tap(x,240);SystemClock.sleep(80);tap(x,240);Thread.sleep(600);
             check("real_double_tap_activates_controls",scene.isActiveTarget());
             check("no_stuck_carousel_after_swipes",!scene.adjacentPending() && !scene.isContentTransitionRunning());
+            main(()->{queueGap=true;offered|=PlaybackState.ACTION_SKIP_TO_QUEUE_ITEM;queue(true);publish(101);requests.clear();});Thread.sleep(600);
+            drag(x-90*s,blankY(),170*s,0,350,0,false);
+            android.graphics.Rect row=queueRow(host.getUiAutomation().getRootInActiveWindow(),"Track 102");
+            check("queue_gap_target_is_clickable",row!=null);tap(row.exactCenterX(),row.exactCenterY());Thread.sleep(150);
+            check("brief_session_gap_keeps_selection_pending",gapRetained && surface.queueOpen() && surface.queuePending());
+            Thread.sleep(1000);check("same_session_return_confirms_and_closes_queue",track==102 && !surface.queueOpen() && !surface.queuePending());
+            check("session_gap_does_not_duplicate_queue_command",requests.equals(List.of(102L)));
+            main(()->{publish(101);requests.clear();});Thread.sleep(600);
+            drag(x-90*s,blankY(),170*s,0,350,0,false);
+            row=queueRow(host.getUiAutomation().getRootInActiveWindow(),"Track 102");
+            if(row==null)throw new AssertionError("Missing replacement-session queue row");
+            tap(row.exactCenterX(),row.exactCenterY());Thread.sleep(120);
+            MediaSession[] replacement={null};main(()->{
+                replacement[0]=new MediaSession(activity,"Different live session");replacement[0].setActive(true);
+                setStatic("current",new MediaController(activity,replacement[0].getSessionToken()));
+                scene.refreshMedia();surface.refreshSession();
+            });
+            check("different_live_session_cancels_pending_queue",surface.queueOpen() && !surface.queuePending());
+            Thread.sleep(850);check("returning_original_session_cannot_confirm_cancelled_request",surface.queueOpen() && !surface.queuePending() && requests.equals(List.of(102L)));
+            main(()->replacement[0].release());
         }catch(Throwable failure){failures.add(failure.toString());}
         finally{
             main(()->{if(activity!=null)activity.finish();if(session!=null)session.release();setStatic("current",null);setStatic("playbackSnapshot",null);});
@@ -142,4 +169,9 @@ final class SwipeInputChecks {
     }
     private String sceneTitle(){try{Field f=PlayerView.class.getDeclaredField("contentTitle");f.setAccessible(true);return (String)f.get(scene);}catch(Exception e){throw new RuntimeException(e);}}
     private View widget(String name){try{Field f=PlayerSurface.class.getDeclaredField(name);f.setAccessible(true);return (View)f.get(surface);}catch(Exception e){throw new RuntimeException(e);}}
+    private android.graphics.Rect queueRow(android.view.accessibility.AccessibilityNodeInfo node,String title){
+        if(node==null)return null;CharSequence text=node.getContentDescription();
+        if(node.isClickable() && node.isEnabled() && text!=null && text.toString().contains(title)){var bounds=new android.graphics.Rect();node.getBoundsInScreen(bounds);return bounds;}
+        for(int i=0;i<node.getChildCount();i++){var found=queueRow(node.getChild(i),title);if(found!=null)return found;}return null;
+    }
 }

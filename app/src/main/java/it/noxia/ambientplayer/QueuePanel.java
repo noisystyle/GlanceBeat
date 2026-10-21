@@ -162,6 +162,10 @@ final class QueuePanel extends FrameLayout {
         if(!accepting || getVisibility()!=VISIBLE)return;
         MusicQueue.Snapshot fresh=MusicQueue.read();
         if(pending!=null) {
+            // Some local players briefly deactivate their session while selecting a song.
+            // Keep the request and shown rows until its existing timeout; an actual
+            // different session must still fail the strict token check below.
+            if(fresh.token()==null)return;
             if(!Objects.equals(pendingSession,fresh.token())) { fail(getContext().getString(R.string.queue_session_changed));return; }
             if(MusicQueue.confirmed(fresh,pendingSession,pending)) {
                 android.util.Log.i("AmbientQueue","selection_confirmed queueId="+pending.id());

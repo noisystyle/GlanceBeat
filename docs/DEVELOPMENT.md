@@ -71,3 +71,15 @@ python3 tools/probe_player_reliability_emulator.py --serial emulator-5554 --edit
 ```
 
 This covers queued and queue-less transport, slow swipes, release after a pause, cancellation, stale track identities, unsupported commands, pending request recovery, and AOD gesture suppression.
+
+### Real local music providers
+
+Install the official Namida/Musicolet application in a disposable emulator and import three generated audio files named `GlanceBeat Sample 1`, `GlanceBeat Sample 2` and `GlanceBeat Sample 3`, with embedded artwork. Start playback in the real app before running:
+
+```bash
+./gradlew :app:assemblePublicDebug :app:assemblePublicDebugAndroidTest
+python3 tools/probe_local_providers_emulator.py --serial emulator-5554 --provider namida
+python3 tools/probe_local_providers_emulator.py --serial emulator-5554 --provider musicolet
+```
+
+Run one provider at a time and start its playback before each command. These checks use the installed application's real media session and native touch input: they create no replacement media session and require no music-service account. Reports and screenshots are written under ignored `work/local-providers/`. The suite also records brief session gaps and verifies queue selection, return to the player, adjacent artwork, cover swipes and pause/resume. It temporarily sets and removes the emulator PIN `1234`; never run it on a personal device.

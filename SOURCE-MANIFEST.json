@@ -20,11 +20,11 @@
     },
     {
       "path": "README.md",
-      "sha256": "d78180c2fa59794636ab1478638c5bb6366115a768773bfbcf3a1e0edacc1402"
+      "sha256": "ae243b6c3284d059664307963fa5ce4627c887dda7c5435e3cc4446d23fd258b"
     },
     {
       "path": "app/build.gradle.kts",
-      "sha256": "ac1097aa0656dae9d6a4708a67f754b877d6bece7c0cf9350034aaa12ca7edd5"
+      "sha256": "739f9fc501c7c3a7af061c664426e6df5a85f82b933fd66114d49020696a6429"
     },
     {
       "path": "app/src/androidTest/java/it/noxia/ambientplayer/BitchordChecks.java",
@@ -44,7 +44,11 @@
     },
     {
       "path": "app/src/androidTest/java/it/noxia/ambientplayer/DrivingInstrumentation.java",
-      "sha256": "d93aea04e490b905d7df4b5867e3a4288a349701d73e3cfbc8870723b204856f"
+      "sha256": "f97ca2bd875e692ee9ee349075c025b2c0b228da8d7d439e2e611cfde71016f6"
+    },
+    {
+      "path": "app/src/androidTest/java/it/noxia/ambientplayer/LocalProviderChecks.java",
+      "sha256": "b973d41b4c9208272467fe6fb7c41577d32963fe760bc423c978177fbf21c058"
     },
     {
       "path": "app/src/androidTest/java/it/noxia/ambientplayer/LocalizationChecks.java",
@@ -80,7 +84,7 @@
     },
     {
       "path": "app/src/androidTest/java/it/noxia/ambientplayer/SwipeInputChecks.java",
-      "sha256": "69e47a13ac18d83313f80c60a9e96c6f2943b603fa97ae1c527f04b7f3096d9e"
+      "sha256": "6b82938629c25a59aeedf102287f048c1259daea32adfde48f1d218772230049"
     },
     {
       "path": "app/src/androidTest/java/it/noxia/ambientplayer/WindowEntranceChecks.java",
@@ -104,7 +108,7 @@
     },
     {
       "path": "app/src/main/AndroidManifest.xml",
-      "sha256": "f9561421278f7aad5ab3076d5cfaae05fde074f3b97c18771ba0011fcc4a89b6"
+      "sha256": "ce7a3896f344be791c562cfb4bfd3cbebbb6bbb0299d25bb3b561fb4006031a8"
     },
     {
       "path": "app/src/main/assets/PHOSPHOR-LICENSE.txt",
@@ -232,7 +236,7 @@
     },
     {
       "path": "app/src/main/java/it/noxia/ambientplayer/MusicSources.java",
-      "sha256": "f7fcb88c0664beff795a5f56a0511b1b2b7ec080b7852bf082bf393c3cf9180f"
+      "sha256": "b618087b5796c10d3d40842b11f1e81757490591ee052c4bbeecac9e0d50ba51"
     },
     {
       "path": "app/src/main/java/it/noxia/ambientplayer/NotificationIconPolicy.java",
@@ -292,7 +296,7 @@
     },
     {
       "path": "app/src/main/java/it/noxia/ambientplayer/QueuePanel.java",
-      "sha256": "84b8e599ebb9ea4d539a5feda720aca57a46e056de535cc3920c607a1208c306"
+      "sha256": "e88a5d25a0caf6422640f8a55bab9cbf8a09ffb367d3744c8f5b33c355cfac63"
     },
     {
       "path": "app/src/main/java/it/noxia/ambientplayer/QueueSelection.java",
@@ -460,7 +464,7 @@
     },
     {
       "path": "app/src/main/res/values/strings.xml",
-      "sha256": "1f14707af936b94a80e18c4478e553bf36d6cd67f7542f899613247d8b88458c"
+      "sha256": "2d49c98059f88409ea575b2f04324a43b3fc87198b0532bc6ef47511410f1dcc"
     },
     {
       "path": "app/src/main/res/values/styles.xml",
@@ -468,7 +472,7 @@
     },
     {
       "path": "app/src/main/res/values-it/strings.xml",
-      "sha256": "2e5bedfddf9f35416daf39bb02a7a33c298c7943e099fa216591e1035dff2a77"
+      "sha256": "97783d0a7492d7bdc709bb7a2a24ebd058b0b0708067478e0828daa413a1f799"
     },
     {
       "path": "app/src/main/res/xml/data_extraction_rules.xml",
@@ -528,7 +532,7 @@
     },
     {
       "path": "app/src/test/java/it/noxia/ambientplayer/MusicSourcesTest.java",
-      "sha256": "070883e041c31bbc0daec8a48bee4b5052d27fa9a9b7aba4fe06ea1c2e580ea8"
+      "sha256": "f1b4654a91e32ad87d63669730eb56baf249e1161ccfe682b7d16e5e306b5ca9"
     },
     {
       "path": "app/src/test/java/it/noxia/ambientplayer/NotificationIconPolicyTest.java",
@@ -576,11 +580,11 @@
     },
     {
       "path": "docs/COMPATIBILITY.md",
-      "sha256": "99a7dfb928ab4ce6d4678f61571bf63be8eba316e319e18c9c12f3b7b5ad6361"
+      "sha256": "9b6d8d6f9addca4ff36bfc3714a3289f3727f0781bd6b860f70fcbd7ccef2d24"
     },
     {
       "path": "docs/DEVELOPMENT.md",
-      "sha256": "d137d0ba90ae775db119aaab3d4c920b6046de9af79f4f88ab612919466134ab"
+      "sha256": "248f3272f88028137055f432168be260fba04c616573fa0a957f14ffcff9015a"
     },
     {
       "path": "docs/PRIVACY.md",
@@ -588,7 +592,7 @@
     },
     {
       "path": "docs/RELEASES.md",
-      "sha256": "e7aa1e9e7f11958f34c80d2190e038ca66c54993c420776209364e8aef38bfe4"
+      "sha256": "8623019ae0d82278e2b314cb3bcf6a7fe6c0a25f8cde8a9fef5d77b0b963e812"
     },
     {
       "path": "docs/THIRD_PARTY.md",
@@ -668,7 +672,7 @@
     },
     {
       "path": "tools/export_public_source.py",
-      "sha256": "5c609657b2bbc08f35be6677f3c117be1285d253d011f7eed2f2a5b61fdbadc0"
+      "sha256": "e29d22ffa727e0572c3137e6aaa690077a22061a255360f0fb8943f579a678cc"
     },
     {
       "path": "tools/music-fixture/build.gradle.kts",
@@ -697,6 +701,10 @@
     {
       "path": "tools/music-fixture/src/main/java/app/morphe/android/apps/youtube/music/FixtureReceiver.java",
       "sha256": "2b83fc79790d0375ba20720723a311f3e29a83b8fb0619f9be944f97dd237d5c"
+    },
+    {
+      "path": "tools/probe_local_providers_emulator.py",
+      "sha256": "f0c291c54bcd3cb1a2782f15f45dc9bebd79eb069b01b487f66e6c082f09089d"
     },
     {
       "path": "tools/probe_player_reliability_emulator.py",

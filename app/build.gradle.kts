@@ -32,8 +32,8 @@ android {
         create("public") {
             dimension = "edition"
             applicationId = "it.noxia.glancebeat"
-            versionCode = 2
-            versionName = "0.1.0-beta02"
+            versionCode = 3
+            versionName = "0.1.0-beta03"
             if (hasPublicSigning) signingConfig = signingConfigs.getByName("publicRelease")
             isDefault = true
         }

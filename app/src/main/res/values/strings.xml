@@ -10,7 +10,7 @@
     <string name="player_on">Enabled. Set up access to start automatically.</string>
     <string name="preview">Preview player</string>
     <string name="music_title">Music apps</string>
-    <string name="music_sources">Spotify, YouTube Music, Apple Music, Tidal, Deezer, Amazon Music and Bitchord.</string>
+    <string name="music_sources">Spotify, YouTube Music, Apple Music, Tidal, Deezer, Amazon Music, Bitchord, Namida and Musicolet.</string>
     <string name="music_needed">Allow access to show the track and playback controls.</string>
     <string name="music_ready">Access granted. Ready to read the music session.</string>
     <string name="music_paused">Music is paused.</string>

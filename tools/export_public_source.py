@@ -13,7 +13,7 @@ INCLUDE = [
     "gradlew", "gradlew.bat", "gradle/wrapper",
     "app/build.gradle.kts", "app/src/main", "app/src/public", "app/src/debug",
     "app/src/test", "app/src/androidTest", "app/src/androidTestPublic",
-    "tools/export_public_source.py", "tools/probe_player_reliability_emulator.py",
+    "tools/export_public_source.py", "tools/probe_player_reliability_emulator.py", "tools/probe_local_providers_emulator.py",
     "tools/music-fixture", "tools/stability-fixture", "tools/bitchord-fixture", "tools/catalog-fixture",
 ]
 BLOCKED_PARTS = {".git", ".gradle", "build", "work", "__pycache__", "personal", "testPersonal", "androidTestPersonal"}
