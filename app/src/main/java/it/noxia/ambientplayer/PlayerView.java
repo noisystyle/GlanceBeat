@@ -87,7 +87,11 @@ final class PlayerView extends View {
     private AccessorySupport audioOutput;
     private AdjacentCovers adjacent;
     private float coverDownX,coverDownY,coverDrag;
-    private boolean coverDown,coverSwiping;
+    private boolean coverDown,coverSwiping,swipeStartedActive;
+    private MusicFeedback.Target coverTransportTouch,coverTransportPending;
+    private int coverTransportDirection;
+    private boolean coverTransportMoving;
+    private final Runnable coverTransportTimeout=()->animateCoverTo(0,this::clearFrozenRow);
     private final android.util.LongSparseArray<android.app.PendingIntent> notificationTouches=new android.util.LongSparseArray<>();
     private final android.util.LongSparseArray<AdjacentCovers.Anchor> coverTouches=new android.util.LongSparseArray<>();
     private ValueAnimator coverReturn;
@@ -198,11 +202,6 @@ final class PlayerView extends View {
                         && Math.abs(last.getX()-first.getX())>Math.abs(last.getY()-first.getY())*1.4f) {
                     PlayerView.this.actions.onQueue();return true;
                 }
-                if (active && first != null && first.getY()-last.getY() > 80*getResources().getDisplayMetrics().density
-                        && Math.abs(last.getX()-first.getX()) < Math.abs(last.getY()-first.getY()) && vy < -200) {
-                    PlayerView.this.actions.onUnlock();
-                    return true;
-                }
                 return false;
             }
         });
@@ -278,7 +277,7 @@ final class PlayerView extends View {
         return MusicFeedback.identity(metadata)!=null && java.util.Objects.equals(MusicFeedback.identity(metadata),MusicFeedback.identity(displayedMetadata))
             && adjacent!=null && adjacent.metadataMatchesCurrent(media.getSessionToken(),metadata);
     }
-    boolean adjacentPending(){return adjacent!=null && adjacent.pending();}
+    boolean adjacentPending(){return coverTransportPending!=null || adjacent!=null && adjacent.pending();}
     int adjacentReady(){return adjacent==null?0:adjacent.readyCount();}
     int adjacentLoading(){return adjacent==null?0:adjacent.loadingCount();}
     private void updateAdjacentVisibility() {
@@ -316,6 +315,7 @@ final class PlayerView extends View {
     }
     private void clearFrozenRow() {
         if(frozenRow!=null)frozenRow.release();frozenRow=null;coverDrag=0;coverCommitDirection=0;
+        coverTransportPending=null;coverTransportMoving=false;coverTransportDirection=0;removeCallbacks(coverTransportTimeout);
         coverOriginArtwork=coverOriginQueueArtwork=null;coverCommitOriginEntry=null;coverCommitEntry=null;coverCommitToken=null;coverCommitConfirmed=false;coverExternalCommit=false;coverCommitOrigin=null;removeCallbacks(coverRecovery);
         if(adjacent!=null)adjacent.presentationBlocked(false);invalidate();
     }
@@ -323,9 +323,47 @@ final class PlayerView extends View {
         if(coverReturn!=null)coverReturn.cancel();coverReturn=null;
         coverDown=false;coverSwiping=false;if(coverGesture!=null)coverGesture.reset();removeCallbacks(hapticEcho);clearFrozenRow();
     }
-    private boolean navigateCover(boolean previous) { return navigateCover(previous,adjacent==null?null:adjacent.anchor(),true); }
+    private boolean canNavigateCover(boolean previous) {
+        return adjacent!=null && adjacent.available(previous) || transportAvailable(previous);
+    }
+    private boolean transportAvailable(boolean previous) {
+        MediaController media=media();PlaybackState state=media==null?null:media.getPlaybackState();
+        return state!=null && (state.getActions()&(previous?PlaybackState.ACTION_SKIP_TO_PREVIOUS:PlaybackState.ACTION_SKIP_TO_NEXT))!=0;
+    }
+    private boolean navigateCover(boolean previous) {
+        if(adjacent==null || !adjacent.available(previous))return navigateTransportCover(previous,MusicFeedback.target(media(),displayedMetadata),true);
+        return navigateCover(previous,adjacent.anchor(),true);
+    }
+    /** A published queue is optional: standard transport still works without neighboring metadata. */
+    private boolean navigateTransportCover(boolean previous,MusicFeedback.Target touched,boolean click) {
+        MediaController media=media();
+        if(!active || activeProgress!=1 || columnsMoving() || queueProgress!=0 || coverCommitDirection!=0 || coverTransportPending!=null
+            || touched==null || !touched.equals(MusicFeedback.target(media,media==null?null:media.getMetadata())) || !transportAvailable(previous))return false;
+        captureFrozenRow();coverTransportPending=touched;coverTransportDirection=previous?1:-1;
+        transportDirection=coverTransportDirection;transportDirectionUntil=SystemClock.uptimeMillis()+5000;
+        postDelayed(coverTransportTimeout,5000);actions.onInteract();
+        try {
+            if(previous)media.getTransportControls().skipToPrevious();else media.getTransportControls().skipToNext();
+        }catch(SecurityException|IllegalStateException unavailable){animateCoverTo(0,this::clearFrozenRow);return false;}
+        if(click)performHapticFeedback(android.view.HapticFeedbackConstants.CONFIRM);
+        return true;
+    }
+    private void observeTransportCover(MediaController media,MediaMetadata next) {
+        if(coverTransportPending==null)return;
+        if(media==null || !coverTransportPending.token().equals(media.getSessionToken())){resetCoverMotion();return;}
+        String identity=MusicFeedback.identity(next);
+        if(coverTransportMoving || identity==null || identity.equals(coverTransportPending.identity()))return;
+        coverTransportMoving=true;removeCallbacks(coverTransportTimeout);
+        Bitmap art=metadataArtwork(next);
+        frozenRow.replaceDestination(coverTransportDirection,new CarouselFrame.Card(coverBitmap(art),null,null));
+        animateCoverTo(coverTransportDirection*coverSpacing(),()->{coverLayer.finish();clearFrozenRow();actions.onVisualSettled();});
+    }
+    boolean requestSwipeUnlock(float dx,float dy) {
+        if(!active || coverSwiping || queueProgress!=0 || columnsMoving() || -dy<=80*getResources().getDisplayMetrics().density || Math.abs(dx)>=-dy)return false;
+        actions.onUnlock();return true;
+    }
     private boolean navigateCover(boolean previous,AdjacentCovers.Anchor touched,boolean click) {
-        if(columnsMoving() || !active || activeProgress!=1 || queueProgress!=0 || adjacent==null || coverCommitDirection!=0)return false;
+        if(columnsMoving() || !active || activeProgress!=1 || queueProgress!=0 || adjacent==null || coverCommitDirection!=0 || coverTransportPending!=null)return false;
         actions.onInteract();MusicQueue.Entry target=adjacent.entry(previous);
         if(target==null || touched==null)return false;
         captureFrozenRow();
@@ -706,6 +744,7 @@ final class PlayerView extends View {
     void refreshMedia() {
         MediaController media = media();
         MediaMetadata next = media == null ? null : media.getMetadata();
+        observeTransportCover(media,next);
         // A temporary metadata gap must not flash the placeholder between songs.
         boolean staleOrigin=false;
         if(coverCommitDirection==0 && next!=null && media!=null && lastHandoffTarget!=null
@@ -894,9 +933,9 @@ final class PlayerView extends View {
             if (state!=null && state.getState()==PlaybackState.STATE_PLAYING) {
                 if ((offered & PlaybackState.ACTION_PAUSE)!=0) media.getTransportControls().pause();
             } else if ((offered & PlaybackState.ACTION_PLAY)!=0) media.getTransportControls().play();
-        } else if (coverCommitDirection==0 && coverReturn==null && Math.abs(x-88)<35 && (offered & PlaybackState.ACTION_SKIP_TO_NEXT)!=0) {
+        } else if (coverCommitDirection==0 && coverTransportPending==null && coverReturn==null && Math.abs(x-88)<35 && (offered & PlaybackState.ACTION_SKIP_TO_NEXT)!=0) {
             transportDirection=-1;transportDirectionUntil=SystemClock.uptimeMillis()+5000;media.getTransportControls().skipToNext();
-        } else if (coverCommitDirection==0 && coverReturn==null && Math.abs(x+88)<35 && (offered & PlaybackState.ACTION_SKIP_TO_PREVIOUS)!=0) {
+        } else if (coverCommitDirection==0 && coverTransportPending==null && coverReturn==null && Math.abs(x+88)<35 && (offered & PlaybackState.ACTION_SKIP_TO_PREVIOUS)!=0) {
             transportDirection=1;transportDirectionUntil=SystemClock.uptimeMillis()+5000;media.getTransportControls().skipToPrevious();
         }
     }
@@ -908,7 +947,8 @@ final class PlayerView extends View {
             if(notification!=null)notificationTouches.put(event.getDownTime(),notification);
             if(coverTouches.size()>=3)coverTouches.removeAt(0);
             if(active && adjacent!=null && coverBandHit(event.getX(),event.getY()))coverTouches.put(event.getDownTime(),adjacent.anchor());
-            coverDown=active && !columnsMoving() && activeProgress==1 && queueProgress==0 && coverCommitDirection==0 && !adjacentPending() && coverBandHit(event.getX(),event.getY());
+            coverTransportTouch=MusicFeedback.target(media(),displayedMetadata);swipeStartedActive=active;
+            coverDown=active && !columnsMoving() && activeProgress==1 && queueProgress==0 && coverCommitDirection==0 && coverTransportPending==null && !adjacentPending() && coverBandHit(event.getX(),event.getY());
             coverDownX=event.getX();coverDownY=event.getY();coverSwiping=false;coverGesture.reset();removeCallbacks(hapticEcho);
             if(coverDown && coverReturn!=null){coverReturn.cancel();coverReturn=null;clearFrozenRow();}
         }
@@ -921,7 +961,7 @@ final class PlayerView extends View {
             }
             if(coverSwiping) {
                 actions.onInteract();int before=coverGesture.armed();
-                CoverDrag.State state=coverGesture.update(dx/scale(),coverSpacing(),adjacent.available(true),adjacent.available(false));coverDrag=state.displacement();
+                CoverDrag.State state=coverGesture.update(dx/scale(),coverSpacing(),canNavigateCover(true),canNavigateCover(false));coverDrag=state.displacement();
                 if(state.detent()) {coverDetents++;performHapticFeedback(android.view.HapticFeedbackConstants.CONFIRM);removeCallbacks(hapticEcho);postDelayed(hapticEcho,38);}
                 else if(before!=state.armed() && state.armed()==0){removeCallbacks(hapticEcho);performHapticFeedback(android.view.HapticFeedbackConstants.CLOCK_TICK);}
                 if(before!=state.armed())actions.onVisualSettled();invalidate();return true;
@@ -929,9 +969,16 @@ final class PlayerView extends View {
         }
         if(coverSwiping && (action==MotionEvent.ACTION_UP || action==MotionEvent.ACTION_CANCEL)) {
             int direction=coverGesture.armed();boolean sent=false;
-            if(action==MotionEvent.ACTION_UP && direction!=0)sent=navigateCover(direction>0,coverTouches.get(event.getDownTime()),false);
+            if(action==MotionEvent.ACTION_UP && direction!=0) {
+                boolean previous=direction>0;
+                sent=adjacent.available(previous)?navigateCover(previous,coverTouches.get(event.getDownTime()),false):navigateTransportCover(previous,coverTransportTouch,false);
+            }
             coverDown=false;coverSwiping=false;coverGesture.reset();removeCallbacks(hapticEcho);
             if(!sent)animateCoverTo(0,this::clearFrozenRow);return true;
+        }
+        if(action==MotionEvent.ACTION_POINTER_DOWN)swipeStartedActive=false;
+        if(action==MotionEvent.ACTION_UP && swipeStartedActive && requestSwipeUnlock(event.getX()-coverDownX,event.getY()-coverDownY)) {
+            coverDown=false;MotionEvent cancel=MotionEvent.obtain(event);cancel.setAction(MotionEvent.ACTION_CANCEL);gestures.onTouchEvent(cancel);cancel.recycle();return true;
         }
         if(action==MotionEvent.ACTION_UP || action==MotionEvent.ACTION_CANCEL)coverDown=false;
         boolean handled=gestures.onTouchEvent(event);
@@ -945,8 +992,8 @@ final class PlayerView extends View {
             info.addAction(new AccessibilityNodeInfo.AccessibilityAction(R.id.action_open_music,getContext().getString(R.string.open_music_app,MusicSources.name(getContext(),media()==null?null:media().getPackageName()))));
             info.addAction(new AccessibilityNodeInfo.AccessibilityAction(R.id.action_queue,getContext().getString(R.string.show_queue)));
             if(accessoryConnected())info.addAction(new AccessibilityNodeInfo.AccessibilityAction(R.id.action_accessory,getContext().getString(R.string.show_accessory_batteries)));
-            if(adjacent!=null && adjacent.available(true))info.addAction(new AccessibilityNodeInfo.AccessibilityAction(R.id.action_previous_cover,getContext().getString(R.string.previous_track_description,adjacent.label(true))));
-            if(adjacent!=null && adjacent.available(false))info.addAction(new AccessibilityNodeInfo.AccessibilityAction(R.id.action_next_cover,getContext().getString(R.string.next_track_description,adjacent.label(false))));
+            if(canNavigateCover(true))info.addAction(new AccessibilityNodeInfo.AccessibilityAction(R.id.action_previous_cover,getContext().getString(R.string.previous_track_description,adjacent.label(true))));
+            if(canNavigateCover(false))info.addAction(new AccessibilityNodeInfo.AccessibilityAction(R.id.action_next_cover,getContext().getString(R.string.next_track_description,adjacent.label(false))));
         }
         info.addAction(new AccessibilityNodeInfo.AccessibilityAction(R.id.action_unlock,preview ? getContext().getString(R.string.preview_close) : getContext().getString(R.string.unlock)));
     }

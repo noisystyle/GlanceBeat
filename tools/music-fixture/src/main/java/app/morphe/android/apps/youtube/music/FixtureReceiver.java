@@ -6,6 +6,7 @@ import android.media.session.PlaybackState;
 public class FixtureReceiver extends BroadcastReceiver {
  @Override public void onReceive(Context c, Intent intent) {
   if(intent.getBooleanExtra("query_shuffle",false)){setResultData(FixtureApp.shuffleCommands+":"+FixtureApp.lastShuffle);return;}
+  if(intent.hasExtra("queue_hidden")){FixtureApp.hideQueue=intent.getBooleanExtra("queue_hidden",false);FixtureApp.publishVisibleQueue();}
   if(intent.hasExtra("shuffle_supported"))FixtureApp.shuffleSupported=intent.getBooleanExtra("shuffle_supported",false);
   if(intent.hasExtra("shuffle_ack"))FixtureApp.shuffleAck=intent.getBooleanExtra("shuffle_ack",true);
   if(intent.hasExtra("shuffle_mode")){FixtureApp.compat.setShuffleMode(intent.getIntExtra("shuffle_mode",-1));if(intent.getBooleanExtra("shuffle_only",false))return;}

@@ -22,7 +22,7 @@ public class FixtureApp extends Application {
  static boolean seekAllowed=true;
  static boolean queueSkipFlag=true,ignoreQueue=false;
  static int artDelayMs;
- static boolean trimQueue;
+ static boolean trimQueue,hideQueue;
  static long activeQueueId=100;
  static java.util.List<MediaSession.QueueItem> queue=java.util.List.of();
  static void publishQueue(int count,boolean mediaIds) {
@@ -36,7 +36,7 @@ public class FixtureApp extends Application {
  static void publishVisibleQueue() {
   int first=0;
   if(trimQueue)for(int i=0;i<queue.size();i++)if(queue.get(i).getQueueId()==activeQueueId){first=i;break;}
-  session.setQueue(queue.subList(first,queue.size()));
+  session.setQueue(hideQueue?java.util.List.of():queue.subList(first,queue.size()));
  }
  static void choose(long id) {
   Log.i("FixtureQueue","requested="+id);

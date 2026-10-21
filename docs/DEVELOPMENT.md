@@ -63,3 +63,11 @@ python3 tools/export_public_source.py --output work/public-source/GlanceBeat
 This creates a new local directory from an explicit source allowlist plus a SHA-256 manifest. It excludes personal source sets, development history, diagnostic output, APKs, signing files, SDK paths and Git metadata. It never publishes, creates a remote, commits, pushes or installs anything. The output path must not already exist.
 
 Build that snapshot independently before publishing it. Release APKs are unsigned until a release signing configuration is provided. No release key is included.
+
+Swipe regressions use Android input injection through the complete player window (including native controls), rather than calling the gesture handler directly:
+
+```bash
+python3 tools/probe_player_reliability_emulator.py --serial emulator-5554 --edition public --mode swipes
+```
+
+This covers queued and queue-less transport, slow swipes, release after a pause, cancellation, stale track identities, unsupported commands, pending request recovery, and AOD gesture suppression.

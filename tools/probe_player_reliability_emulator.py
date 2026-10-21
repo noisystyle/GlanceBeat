@@ -4,7 +4,7 @@ import argparse,json,subprocess,time
 from pathlib import Path
 p=argparse.ArgumentParser();p.add_argument('--serial',required=True)
 p.add_argument('--edition',choices=['public','personal'],default='public')
-p.add_argument('--mode',choices=['stability','continuity','columns','open_layout','bitchord','youtube_shuffle','carousel_commit','catalog','music_launch','accessory','localization','setup'],action='append')
+p.add_argument('--mode',choices=['swipes','stability','continuity','columns','open_layout','bitchord','youtube_shuffle','carousel_commit','catalog','music_launch','accessory','localization','setup'],action='append')
 a=p.parse_args();package='it.noxia.glancebeat' if a.edition=='public' else 'it.noxia.ambientplayer';assert a.serial.startswith('emulator-'),'Disposable emulator required'
 root=Path(__file__).resolve().parents[1];(root/'work').mkdir(exist_ok=True)
 def adb(*args,required=True):

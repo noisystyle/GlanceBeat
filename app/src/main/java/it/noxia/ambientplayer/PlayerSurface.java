@@ -44,7 +44,7 @@ final class PlayerSurface extends FrameLayout {
     private AccessoryPanel accessory;
     private boolean accessoryOpen,pageAccessory;
     private final Runnable report;
-    private boolean queueOpen,queueSwipe,pageTouchStarted;
+    private boolean queueOpen,queueSwipe,pageTouchStarted,pageTouchActive;
     private float queueFraction,queueDownX,queueDownY;
     private ValueAnimator queueTransition;
     private final LinearProgressIndicator progress;
@@ -231,11 +231,17 @@ final class PlayerSurface extends FrameLayout {
         report.run();
     }
     @Override public boolean onInterceptTouchEvent(MotionEvent event) {
-        if(event.getActionMasked()==MotionEvent.ACTION_DOWN){queueDownX=event.getX();queueDownY=event.getY();queueSwipe=false;pageTouchStarted=auxiliaryOpen() || queueFraction>0;}
-        if(event.getActionMasked()==MotionEvent.ACTION_MOVE && !pageTouchStarted && !scene.columnsMoving() && !auxiliaryOpen() && queueFraction==0 && scene.isActiveTarget() && fraction==1 && !pocketed && !seek.isDown() && (!splitColumns() || queueDownX>=playerLeft && queueDownX<playerLeft+viewportWidth) && !scene.coverBandHit(queueDownX,queueDownY)) {
+        if(event.getActionMasked()==MotionEvent.ACTION_DOWN){queueDownX=event.getX();queueDownY=event.getY();queueSwipe=false;pageTouchStarted=auxiliaryOpen() || queueFraction>0;pageTouchActive=scene.isActiveTarget() && fraction==1;}
+        if(event.getActionMasked()==MotionEvent.ACTION_POINTER_DOWN)pageTouchActive=false;
+        int action=event.getActionMasked();
+        if((action==MotionEvent.ACTION_MOVE || action==MotionEvent.ACTION_UP) && !pageTouchStarted && !scene.columnsMoving() && !auxiliaryOpen() && queueFraction==0 && scene.isActiveTarget() && fraction==1 && !pocketed && !seek.isDown() && (!splitColumns() || queueDownX>=playerLeft && queueDownX<playerLeft+viewportWidth)) {
             float dx=event.getX()-queueDownX,dy=event.getY()-queueDownY;
-            if(!splitColumns() && dx>64*scale() && dx>Math.abs(dy)*1.4f){queueSwipe=true;openQueue();return true;}
-            if(dx < -64*scale() && -dx>Math.abs(dy)*1.4f && scene.accessoryConnected()){queueSwipe=true;openAccessory();return true;}
+            // Resolve vertical drags on release, including slow swipes and drags starting on a button.
+            if(action==MotionEvent.ACTION_UP && pageTouchActive && scene.requestSwipeUnlock(dx,dy)){queueSwipe=true;return true;}
+            if(action==MotionEvent.ACTION_MOVE && !scene.coverBandHit(queueDownX,queueDownY)) {
+                if(!splitColumns() && dx>64*scale() && dx>Math.abs(dy)*1.4f){queueSwipe=true;openQueue();return true;}
+                if(dx < -64*scale() && -dx>Math.abs(dy)*1.4f && scene.accessoryConnected()){queueSwipe=true;openAccessory();return true;}
+            }
         }
         return queueSwipe;
     }

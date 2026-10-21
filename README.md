@@ -4,7 +4,7 @@
 
 GlanceBeat puts artwork, playback controls and your music queue in a calm interface above the lock screen. It controls the music app you already use through Android media sessions. It does not stream music, replace your music account or provide a music catalogue.
 
-**Status: experimental beta.** [Download the first beta](https://github.com/noisystyle/GlanceBeat/releases/tag/v0.1.0-beta01). The interface supports English and Italian, follows the system language and uses English as the fallback. On Android 13 and newer, you can also choose the app language in Android settings.
+**Status: experimental beta.** [Download the latest beta](https://github.com/noisystyle/GlanceBeat/releases/tag/v0.1.0-beta02). The interface supports English and Italian, follows the system language and uses English as the fallback. On Android 13 and newer, you can also choose the app language in Android settings.
 
 ## Experience
 
@@ -28,9 +28,11 @@ Development has focused on a Samsung foldable and Android emulators. Broad devic
 
 ## Get started
 
-Install the signed public APK from [GitHub Releases](https://github.com/noisystyle/GlanceBeat/releases/tag/v0.1.0-beta01), or build a development APK using the instructions below. Open GlanceBeat and follow the initial setup wizard. Notification access and permission to display over other apps are required: each step stays locked until Android confirms the permission. After setup, enable the player, start music in a supported app, then lock the phone. If a required permission is revoked, the next visit to settings returns to setup. Continuity and Bluetooth remain optional.
+Install the signed public APK from [GitHub Releases](https://github.com/noisystyle/GlanceBeat/releases/tag/v0.1.0-beta02), or build a development APK using the instructions below. Open GlanceBeat and follow the initial setup wizard. Notification access and permission to display over other apps are required: each step stays locked until Android confirms the permission. After setup, enable the player, start music in a supported app, then lock the phone. If a required permission is revoked, the next visit to settings returns to setup. Continuity and Bluetooth remain optional.
 
 Double tap to show or dim the controls. Swipe across the artwork row to change tracks; swipe right outside that row to open the queue. In interactive mode, swipe up or tap the upward arrow to request the native lock screen. Hold briefly on the progress bar before seeking. Tap the current cover to request the music app's player screen; Android handles unlocking first. Opening the exact track screen depends on the provider's session activity or a supported track link.
+
+Artwork swipes also work when a music app exposes next/previous commands without publishing its queue. Neighboring covers and queue entries require metadata from the music app. Upward swipes accept slow drags and a pause before release.
 
 On some Android versions, a sideloaded app's notification or accessibility settings need to be enabled through the system's “Allow restricted settings” option first. Enable the optional Continuity service only if you want it to cover brief interruptions. Disabling the player stops its monitoring; you can also revoke permissions in Android settings.
 

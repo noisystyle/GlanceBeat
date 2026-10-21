@@ -38,6 +38,7 @@ final class CarouselFrame {
         canvas.restore();
     }
     boolean hasDestination(int direction){return (direction>0?previous:next)!=null;}
+    void replaceDestination(int direction,Card card){if(direction>0){if(previous!=null)previous.release();previous=card;}else{if(next!=null)next.release();next=card;}}
     void ensureDestination(int direction,Card fallback){if(direction>0){if(previous==null)previous=fallback;else fallback.release();}else{if(next==null)next=fallback;else fallback.release();}}
     Bitmap destinationCopy(int direction){Card target=direction>0?previous:next;return target==null?null:copy(target.sharp);}
     void release(){if(previous!=null)previous.release();if(current!=null)current.release();if(next!=null)next.release();}
