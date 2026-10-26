@@ -20,11 +20,11 @@
     },
     {
       "path": "README.md",
-      "sha256": "ae243b6c3284d059664307963fa5ce4627c887dda7c5435e3cc4446d23fd258b"
+      "sha256": "2f7b6ffef9976610593080d04508443291b08c0bfb46d04ba35d27ea3c71cf97"
     },
     {
       "path": "app/build.gradle.kts",
-      "sha256": "739f9fc501c7c3a7af061c664426e6df5a85f82b933fd66114d49020696a6429"
+      "sha256": "c16228f4b5bd3cd71adba4b1abc41f7516b0188535d3c7e1c879d9c8f6be7a2d"
     },
     {
       "path": "app/src/androidTest/java/it/noxia/ambientplayer/BitchordChecks.java",
@@ -44,7 +44,11 @@
     },
     {
       "path": "app/src/androidTest/java/it/noxia/ambientplayer/DrivingInstrumentation.java",
-      "sha256": "f97ca2bd875e692ee9ee349075c025b2c0b228da8d7d439e2e611cfde71016f6"
+      "sha256": "89995167100cba609ae6a2f4e4168904e3b98bb5de2729376bdadb0b550bc9f7"
+    },
+    {
+      "path": "app/src/androidTest/java/it/noxia/ambientplayer/FullscreenChecks.java",
+      "sha256": "80d5e7c769a8a89b6ca85da100a070d52df8c47bec5baa899210644b5367c01f"
     },
     {
       "path": "app/src/androidTest/java/it/noxia/ambientplayer/LocalProviderChecks.java",
@@ -204,7 +208,7 @@
     },
     {
       "path": "app/src/main/java/it/noxia/ambientplayer/MainActivity.java",
-      "sha256": "292264d03b9fe34bf6bdfd0d26f07c05ef48f36d244b09793dc21591efbda4c3"
+      "sha256": "0b46647f4d31a047c1f3ad0592f323a35321ad031fe6576d14e9fbc88418f076"
     },
     {
       "path": "app/src/main/java/it/noxia/ambientplayer/MusicFeedback.java",
@@ -468,7 +472,7 @@
     },
     {
       "path": "app/src/main/res/values/styles.xml",
-      "sha256": "d71c5469f1bb080d629865139a90311c86b1789cf170147a286ad5d25090f2d2"
+      "sha256": "93696783a9c895eb8f17f05269866e3c85c16590d83c6e1a96e65095f9323b8c"
     },
     {
       "path": "app/src/main/res/values-it/strings.xml",
@@ -584,7 +588,7 @@
     },
     {
       "path": "docs/DEVELOPMENT.md",
-      "sha256": "248f3272f88028137055f432168be260fba04c616573fa0a957f14ffcff9015a"
+      "sha256": "eb5f093ebac6b762c3121b8c45f659266a7e594e70d90c0f908c922fa755a2ef"
     },
     {
       "path": "docs/PRIVACY.md",
@@ -592,7 +596,7 @@
     },
     {
       "path": "docs/RELEASES.md",
-      "sha256": "8623019ae0d82278e2b314cb3bcf6a7fe6c0a25f8cde8a9fef5d77b0b963e812"
+      "sha256": "69e7974cb616e7b01b3451cfa76f5c4c8928eff69c04cd86af1e97d0f1a3dbd8"
     },
     {
       "path": "docs/THIRD_PARTY.md",

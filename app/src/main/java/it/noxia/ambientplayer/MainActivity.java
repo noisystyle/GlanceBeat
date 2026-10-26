@@ -122,6 +122,8 @@ public class MainActivity extends Activity {
     @android.annotation.SuppressLint("ClickableViewAccessibility") // Black-surface double tap delegates to its accessible click action.
     @Override public void onCreate(Bundle state) {
         super.onCreate(state);
+        // Android 12–14 do not enforce edge-to-edge; keep the backdrop behind system areas.
+        getWindow().setDecorFitsSystemWindows(false);
         preview = this instanceof PreviewActivity;
         probe = BuildConfig.DEBUG && getIntent().getBooleanExtra("probe", false);
         automatic = !preview && !probe && getIntent().getBooleanExtra("automatic", false);

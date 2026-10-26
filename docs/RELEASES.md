@@ -10,10 +10,10 @@ The SHA-256 fingerprint of the public release certificate is:
 01ba0c12d363f18b3d475ca36cb15e9dba5b85889e3d9a220e6c699704dbf203
 ```
 
-The v0.1.0-beta03 GitHub release includes an APK and SHA256SUMS.txt. Verify the downloaded file with `shasum -a 256`, and verify its signature and certificate fingerprint using Android SDK Build Tools:
+The v0.1.0-beta04 GitHub release includes an APK and SHA256SUMS.txt. Verify the downloaded file with `shasum -a 256`, and verify its signature and certificate fingerprint using Android SDK Build Tools:
 
 ```sh
-apksigner verify --verbose --print-certs GlanceBeat-0.1.0-beta03.apk
+apksigner verify --verbose --print-certs GlanceBeat-0.1.0-beta04.apk
 ```
 
 ## Build your own signed APK
@@ -48,3 +48,13 @@ Install the new signed APK over the previous official beta to keep existing sett
 Validation: 15 checks passed for each real app on an Android 16 / API 36 emulator using three generated local MP3s without a service login. Namida 7.1.2 and Musicolet 6.14.1 build540 were tested. All 29 swipe/session regression checks and 123 public unit tests passed; public release lint completed without errors. Online playback and provider favourite/shuffle operations were not verified in this test.
 
 Install over the previous official beta to keep your settings. Double tap into interactive mode, then swipe right outside the artwork row to open the queue.
+
+## 0.1.0-beta04 — Full-screen player on older Android versions
+
+- Fixed a black strip above the player on older Android versions when the display has a camera cutout. The background can now extend behind system areas in both ambient and interactive modes.
+- Content retains its camera-safe inset; Android's native lock screen and authentication remain in control.
+- Added lock-screen fullscreen regression checks for actual window bounds, hidden system bars, camera-safe content and keyguard retention.
+
+Validation: the original beta03 top gap was reproduced on an Android 12 / API 31 emulator with a simulated cutout; the patch passed 10 checks with a cutout and 10 without. The release source passed 20 fresh checks on an Android 16 / API 36 emulator, 123 unit tests and release lint with no errors. These are emulator results; the reporter's physical Galaxy S10 has not been tested.
+
+Install `GlanceBeat-0.1.0-beta04.apk` over the previous official beta to keep settings. The application ID and release certificate are unchanged.

@@ -54,6 +54,17 @@ Other suite modes include `stability`, `continuity`, `carousel_commit`, `catalog
 
 Reports stay under ignored `work/`. Official authenticated services require separate testing; fixtures do not demonstrate a real account mutation.
 
+### Fullscreen and display cutouts
+
+On a disposable emulator with the public debug app and instrumentation installed, run:
+
+```sh
+adb -s emulator-5554 shell am instrument -w -e fullscreen true it.noxia.glancebeat.test/it.noxia.ambientplayer.DrivingInstrumentation
+adb -s emulator-5554 exec-out run-as it.noxia.glancebeat cat files/fullscreen.json
+```
+
+This suite changes the emulator lock settings and temporarily uses PIN `1234`. It checks the actual background bounds, foreground focus, hidden system bars and camera-safe content in both ambient and active modes above a real keyguard. Screenshots are saved as `files/fullscreen-<state>.png`. Run with and without a simulated display cutout on Android 12–14 as well as a recent Android version: newer edge-to-edge enforcement can hide legacy window-layout regressions.
+
 ## Prepare a public source snapshot
 
 ```sh
